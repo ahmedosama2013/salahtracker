@@ -11,7 +11,7 @@
 * **Android & Web Ready:** Available as a responsive web app and downloadable Android APK.
 
 ## 📱 Download Android APK
-You can download the latest Android build directly from the website.
+You can download the latest web app directly from the website.
 
 ---
 Made By : ahmedosama2013b@gmail.com
