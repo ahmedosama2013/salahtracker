@@ -8,7 +8,7 @@
 * **Interactive Calendar:** View past completion history using circular progress rings with full support to edit past entries.
 * **Overview Statistics:** Track total completed prayers, monthly completion rates, and perfect days.
 * **Privacy-First:** All data is saved directly in your browser or device storage—no account required.
-* **Android & Web Ready:** Available as a responsive web app and downloadable Android APK.
+* **Web App:** Available as a web app.
 
 ## 📱 Download Android APK
 You can download the latest web app directly from the website.
