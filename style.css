@@ -599,47 +599,6 @@ body {
     text-align: center;
 }
 
-/* DOWNLOAD APK BUTTON (NO GLOW / FLAT DESIGN) */
-.download-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 0.5rem;
-    width: 100%;
-}
-
-.apk-download-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.65rem;
-    background-color: #2cd2b3;
-    color: #ffffff;
-    font-size: 0.92rem;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    text-decoration: none;
-    padding: 0.75rem 1.75rem;
-    border-radius: 999px;
-    box-shadow: none;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    cursor: pointer;
-}
-
-.apk-download-btn:hover {
-    background-color: #26bd9f;
-    box-shadow: none;
-}
-
-.apk-download-btn:active {
-    transform: scale(0.98);
-}
-
-.apk-phone-icon {
-    flex-shrink: 0;
-    width: 1.4rem;
-    height: 1.4rem;
-}
-
 .footer-author {
     font-size: 0.825rem;
     color: var(--text-secondary);
@@ -676,32 +635,32 @@ body {
 /* Smaller Tablets (e.g., iPad Mini, standard iPads) */
 @media (min-width: 768px) {
     :root {
-        font-size: 18px; /* Smoothly scales up all typography and spacing */
+        font-size: 18px; 
     }
     .app-container {
-        max-width: 650px;
+        max-width: 600px;
     }
 }
 
 /* Large Tablets (e.g., iPad Pro 10.5", 11", 12.9" Portrait) */
 @media (min-width: 1024px) {
     :root {
-        font-size: 22px; 
+        font-size: 20px;
     }
     .app-container {
-        max-width: 850px;
+        max-width: 650px;
     }
     .calendar-days-grid {
-        gap: 0.75rem; /* Better spacing for larger viewports */
+        gap: 0.75rem; 
     }
 }
 
-/* Desktop Monitors & iPad Pro Landscape */
+/* Desktop Monitors & iPad Pro Landscape (16:9 Screens) */
 @media (min-width: 1366px) {
     :root {
-        font-size: 24px;
+        font-size: 20px;
     }
     .app-container {
-        max-width: 950px;
+        max-width: 650px;
     }
 }
