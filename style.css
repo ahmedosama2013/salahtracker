@@ -40,8 +40,10 @@ body {
 }
 
 .app-container {
+    width: 100%;
     max-width: 520px;
     margin: 0 auto;
+    transition: max-width 0.3s ease;
 }
 
 /* HEADER & NAVIGATION MENU */
@@ -167,7 +169,7 @@ body {
 
 .progress-bar-track {
     width: 100%;
-    height: 7px;
+    height: 0.45rem;
     background: var(--border-light);
     border-radius: 999px;
     overflow: hidden;
@@ -220,8 +222,8 @@ body {
 }
 
 .prayer-check-btn {
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
     border-radius: 50%;
     border: 1.5px solid var(--border);
     display: flex;
@@ -239,8 +241,8 @@ body {
 }
 
 .prayer-check-icon {
-    width: 13px;
-    height: 13px;
+    width: 0.8rem;
+    height: 0.8rem;
     stroke: currentColor;
     stroke-width: 2.5;
     fill: none;
@@ -295,7 +297,7 @@ body {
 
 .streak-divider {
     width: 1px;
-    height: 32px;
+    height: 2rem;
     background: var(--border);
 }
 
@@ -331,8 +333,8 @@ body {
 }
 
 .recent-dot {
-    width: 8px;
-    height: 8px;
+    width: 0.5rem;
+    height: 0.5rem;
     border-radius: 50%;
     background: var(--border);
     transition: var(--transition);
@@ -371,7 +373,7 @@ body {
 .month-year-label {
     font-size: 0.88rem;
     font-weight: 600;
-    min-width: 110px;
+    min-width: 7rem;
     text-align: center;
 }
 
@@ -380,8 +382,8 @@ body {
     border: 1px solid var(--border);
     color: var(--text-secondary);
     border-radius: var(--radius-sm);
-    width: 28px;
-    height: 28px;
+    width: 1.75rem;
+    height: 1.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -634,6 +636,8 @@ body {
 
 .apk-phone-icon {
     flex-shrink: 0;
+    width: 1.4rem;
+    height: 1.4rem;
 }
 
 .footer-author {
@@ -662,5 +666,42 @@ body {
 @media (max-width: 480px) {
     body {
         padding: 1.25rem 0.75rem 2.5rem;
+    }
+}
+
+/* =========================================
+   RESPONSIVE SCALING FOR TABLETS & IPAD PRO
+   ========================================= */
+
+/* Smaller Tablets (e.g., iPad Mini, standard iPads) */
+@media (min-width: 768px) {
+    :root {
+        font-size: 18px; /* Smoothly scales up all typography and spacing */
+    }
+    .app-container {
+        max-width: 650px;
+    }
+}
+
+/* Large Tablets (e.g., iPad Pro 10.5", 11", 12.9" Portrait) */
+@media (min-width: 1024px) {
+    :root {
+        font-size: 22px; 
+    }
+    .app-container {
+        max-width: 850px;
+    }
+    .calendar-days-grid {
+        gap: 0.75rem; /* Better spacing for larger viewports */
+    }
+}
+
+/* Desktop Monitors & iPad Pro Landscape */
+@media (min-width: 1366px) {
+    :root {
+        font-size: 24px;
+    }
+    .app-container {
+        max-width: 950px;
     }
 }
