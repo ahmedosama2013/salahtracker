@@ -1,0 +1,23 @@
+{
+  "name": "SalahTracker",
+  "short_name": "SalahTracker",
+  "description": "Track your five daily prayers, monitor your progress, and build consistent streaks.",
+  "id": "./",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#111311",
+  "theme_color": "#10b981",
+  "orientation": "portrait",
+  "lang": "en",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
