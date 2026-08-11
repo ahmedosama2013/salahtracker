@@ -734,3 +734,32 @@ body {
     :root { font-size: 20px; }
     .app-container { max-width: 650px; }
 }
+
+/* =========================================
+   APK Download Button Styles
+   ========================================= */
+.download-apk-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.75rem 0;
+    padding: 0.6rem 1.25rem;
+    background-color: var(--emerald);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    font-weight: bold;
+    font-size: 0.85rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow-subtle);
+}
+
+.download-apk-btn:hover {
+    background-color: #0e9f6e; /* Slightly darker emerald */
+    transform: translateY(-2px);
+    color: #ffffff;
+}
+
+.download-apk-btn:active {
+    transform: translateY(0);
+}
