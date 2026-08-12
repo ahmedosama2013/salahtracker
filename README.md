@@ -10,9 +10,6 @@
 * **Privacy-First:** All data is saved directly in your browser or device storage—no account required.
 * **Web App:** Available as a web app.
 
-## 📱 Download Android APK
-You can download the latest web app directly from the website.
-
 ---
 Made By : ahmedosama2013b@gmail.com
 
