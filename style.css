@@ -200,6 +200,19 @@ body {
     transition: var(--transition);
 }
 
+.prayer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.prayer-time {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
 .prayer-row:hover {
     border-color: var(--emerald-border);
 }
@@ -207,6 +220,10 @@ body {
 .prayer-row.completed {
     background: var(--emerald-light);
     border-color: var(--emerald-border);
+}
+
+.prayer-row.completed .prayer-time {
+    color: var(--emerald-border);
 }
 
 .prayer-name {
