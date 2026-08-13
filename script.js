@@ -99,6 +99,30 @@ function switchTab(tabName) {
     });
 }
 
+function changeMonth(offset) {
+    const newMonth = currentCalDate.getMonth() + offset;
+    currentCalDate.setDate(1); // Safely reset to start to avoid skipping months due to lengths
+    currentCalDate.setMonth(newMonth);
+
+    updateSelectedDateAfterMonthChange();
+    renderCalendar();
+    renderCalendarDetails(selectedCalDateStr);
+}
+
+function updateSelectedDateAfterMonthChange() {
+    const now = new Date();
+    const isCurrentMonthYear = currentCalDate.getMonth() === now.getMonth() && currentCalDate.getFullYear() === now.getFullYear();
+
+    if (isCurrentMonthYear) {
+        // We navigated back to the current month - default to TODAY
+        selectedCalDateStr = getTodayStr();
+    } else {
+        // We're looking at a different month - default to the LAST day of that month
+        const lastDay = new Date(currentCalDate.getFullYear(), currentCalDate.getMonth() + 1, 0);
+        selectedCalDateStr = formatDateStr(lastDay);
+    }
+}
+
 // STREAKS
 function calculateStreaks() {
     const todayStr = getTodayStr();
@@ -177,11 +201,14 @@ function renderTodayTracker() {
 
     PRAYERS.forEach(prayer => {
         const isCompleted = !!record[prayer];
+        
         const row = document.createElement('div');
         row.className = `prayer-row ${isCompleted ? 'completed' : ''}`;
-        
+
         row.innerHTML = `
-            <span class="prayer-name">${PRAYER_NAMES[prayer]}</span>
+            <div class="prayer-info">
+                <span class="prayer-name">${PRAYER_NAMES[prayer]}</span>
+            </div>
             <div class="prayer-check-btn">
                 <svg class="prayer-check-icon" viewBox="0 0 24 24">
                     <polyline points="20 6 9 17 4 12"></polyline>
@@ -410,15 +437,8 @@ function setupEventListeners() {
         });
     });
 
-    document.getElementById('prev-month').addEventListener('click', () => {
-        currentCalDate.setMonth(currentCalDate.getMonth() - 1);
-        renderCalendar();
-    });
-
-    document.getElementById('next-month').addEventListener('click', () => {
-        currentCalDate.setMonth(currentCalDate.getMonth() + 1);
-        renderCalendar();
-    });
+    document.getElementById('prev-month').addEventListener('click', () => changeMonth(-1));
+    document.getElementById('next-month').addEventListener('click', () => changeMonth(1));
 }
 
 // INITIALIZATION
