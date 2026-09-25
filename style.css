@@ -8,10 +8,10 @@
     --text-secondary: #979d95;
     --text-tertiary: #60665f;
     
-    --emerald: #10b981;
-    --emerald-light: rgba(16, 185, 129, 0.12);
-    --emerald-subtle: rgba(16, 185, 129, 0.22);
-    --emerald-border: rgba(16, 185, 129, 0.38);
+    --emerald: #f2c94c;
+    --emerald-light: rgba(242, 201, 76, 0.12);
+    --emerald-subtle: rgba(242, 201, 76, 0.22);
+    --emerald-border: rgba(242, 201, 76, 0.38);
     
     --radius-sm: 8px;
     --radius-md: 12px;
@@ -668,7 +668,7 @@ body {
 .modal-title {
     font-size: 1.35rem;
     font-weight: 700;
-    color: #10b981;
+    color: #f2c94c;
     margin-bottom: 0.5rem;
 }
 
@@ -716,7 +716,7 @@ body {
 .modal-btn {
     width: 100%;
     padding: 0.85rem;
-    background: #10b981;
+    background: #f2c94c;
     color: #ffffff;
     border: none;
     border-radius: var(--radius-md);
@@ -735,7 +735,6 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* RESPONSIVE TABLETS & IPAD PRO */
 @media (min-width: 768px) {
     :root { font-size: 18px; }
     .app-container { max-width: 600px; }
