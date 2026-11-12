@@ -194,16 +194,21 @@ function renderTodayTracker() {
 
     document.getElementById('progress-count').textContent = `${completedCount} / 5`;
     document.getElementById('progress-percentage').textContent = `${percentage}%`;
-    document.getElementById('progress-bar-fill').style.width = `${percentage}%`;
+    document.querySelectorAll('#progress-segments .seg').forEach(seg => {
+        seg.classList.toggle('done', !!record[seg.dataset.prayer]);
+    });
 
     const prayersList = document.getElementById('prayers-list');
     prayersList.innerHTML = '';
 
-    PRAYERS.forEach(prayer => {
+    PRAYERS.forEach((prayer, index) => {
         const isCompleted = !!record[prayer];
         
         const row = document.createElement('div');
         row.className = `prayer-row ${isCompleted ? 'completed' : ''}`;
+        row.setAttribute('role', 'button');
+        row.setAttribute('aria-pressed', String(isCompleted));
+        row.tabIndex = 0;
 
         row.innerHTML = `
             <div class="prayer-info">
@@ -216,10 +221,19 @@ function renderTodayTracker() {
             </div>
         `;
 
-        row.addEventListener('click', () => {
+        const toggle = () => {
             record[prayer] = !record[prayer];
             saveState();
             renderAll();
+        };
+        row.addEventListener('click', toggle);
+        row.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggle();
+                const rows = document.querySelectorAll('#prayers-list .prayer-row');
+                if (rows[index]) rows[index].focus();
+            }
         });
 
         prayersList.appendChild(row);
@@ -344,19 +358,31 @@ function renderCalendarDetails(dateStr) {
     const listEl = document.getElementById('details-prayers-list');
     listEl.innerHTML = '';
 
-    PRAYERS.forEach(p => {
+    PRAYERS.forEach((p, index) => {
         const isDone = !!record[p];
         const row = document.createElement('div');
         row.className = `detail-row ${isDone ? 'completed' : ''}`;
+        row.setAttribute('role', 'button');
+        row.setAttribute('aria-pressed', String(isDone));
+        row.tabIndex = 0;
         row.innerHTML = `
             <span class="detail-name">${PRAYER_NAMES[p]}</span>
-            <span class="detail-status">${isDone ? '✓ Completed' : '○ Missed'}</span>
+            <span class="detail-status">${isDone ? 'Completed' : 'Not logged'}</span>
         `;
 
-        row.addEventListener('click', () => {
+        const toggle = () => {
             record[p] = !record[p];
             saveState();
             renderAll();
+        };
+        row.addEventListener('click', toggle);
+        row.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggle();
+                const rows = document.querySelectorAll('#details-prayers-list .detail-row');
+                if (rows[index]) rows[index].focus();
+            }
         });
 
         listEl.appendChild(row);
