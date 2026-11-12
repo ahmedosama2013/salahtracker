@@ -20,7 +20,7 @@
 
             <nav class="view-nav">
                 <button id="nav-today" class="nav-btn active" data-tab="today">Today</button>
-                <button id="nav-history" class="nav-btn" data-tab="history">Calendar & Stats</button>
+                <button id="nav-history" class="nav-btn" data-tab="history">Calendar &amp; stats</button>
             </nav>
         </header>
 
@@ -38,13 +38,17 @@
                         </div>
                         <span id="progress-percentage" class="progress-percentage">0%</span>
                     </div>
-                    <div class="progress-bar-track">
-                        <div id="progress-bar-fill" class="progress-bar-fill"></div>
+                    <div id="progress-segments" class="progress-segments" aria-hidden="true">
+                        <span class="seg" data-prayer="fajr"></span>
+                        <span class="seg" data-prayer="dhuhr"></span>
+                        <span class="seg" data-prayer="asr"></span>
+                        <span class="seg" data-prayer="maghrib"></span>
+                        <span class="seg" data-prayer="isha"></span>
                     </div>
                 </section>
 
                 <section class="section prayers-section">
-                    <h2 class="section-title">Today's Prayers</h2>
+                    <h2 class="section-title">Today's prayers</h2>
                     <div id="prayers-list" class="prayers-list"></div>
                 </section>
 
@@ -52,8 +56,11 @@
                     <div class="streak-grid">
                         <div class="streak-item">
                             <div class="streak-value-group">
-                                <span class="streak-fire">🔥</span>
+                                <svg class="streak-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+                                </svg>
                                 <span id="current-streak" class="streak-value">0</span>
+                                <span class="streak-unit">days</span>
                             </div>
                             <span class="streak-label">Current streak</span>
                         </div>
@@ -69,7 +76,7 @@
                 </section>
 
                 <section class="section recent-section">
-                    <h2 class="section-title">Recent Progress</h2>
+                    <h2 class="section-title">Recent progress</h2>
                     <div id="recent-list" class="recent-list"></div>
                 </section>
             </div>
@@ -79,12 +86,16 @@
                     <div class="calendar-header">
                         <h2 class="section-title">History</h2>
                         <div class="calendar-controls">
-                            <button id="prev-month" class="cal-nav-btn" aria-label="Previous month">&larr;</button>
+                            <button id="prev-month" class="cal-nav-btn" aria-label="Previous month">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+                            </button>
                             <span id="calendar-month-year" class="month-year-label"></span>
-                            <button id="next-month" class="cal-nav-btn" aria-label="Next month">&rarr;</button>
+                            <button id="next-month" class="cal-nav-btn" aria-label="Next month">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                            </button>
                         </div>
                     </div>
-                    
+
                     <div class="calendar-grid-header">
                         <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
                     </div>
@@ -94,7 +105,7 @@
                         <div class="details-header">
                             <div class="details-title-group">
                                 <span id="details-date-title" class="details-title"></span>
-                                <span id="details-edit-hint" class="details-hint">(Click prayers to edit past entries)</span>
+                                <span id="details-edit-hint" class="details-hint">Tap a prayer to edit</span>
                             </div>
                             <span id="details-summary" class="details-summary">0 / 5</span>
                         </div>
@@ -103,23 +114,23 @@
                 </section>
 
                 <section class="section stats-section">
-                    <h2 class="section-title">Overview Statistics</h2>
+                    <h2 class="section-title">Overview</h2>
                     <div class="stats-grid">
                         <div class="stat-card">
                             <span id="stat-total" class="stat-num">0</span>
-                            <span class="stat-desc">Total Completed</span>
+                            <span class="stat-desc">Total completed</span>
                         </div>
                         <div class="stat-card">
                             <span id="stat-month-rate" class="stat-num">0%</span>
-                            <span class="stat-desc">This Month</span>
+                            <span class="stat-desc">This month</span>
                         </div>
                         <div class="stat-card">
                             <span id="stat-perfect-days" class="stat-num">0</span>
-                            <span class="stat-desc">Perfect Days</span>
+                            <span class="stat-desc">Perfect days</span>
                         </div>
                         <div class="stat-card">
                             <span id="stat-best-streak" class="stat-num">0</span>
-                            <span class="stat-desc">Longest Streak</span>
+                            <span class="stat-desc">Longest streak</span>
                         </div>
                     </div>
                 </section>
@@ -127,25 +138,25 @@
         </main>
 
         <footer class="app-footer">
-            <p class="footer-author">Made By : ahmedosama2013b@gmail.com</p>
+            <p class="footer-author">Made by <a class="footer-link" href="mailto:ahmedosama2013b@gmail.com">ahmedosama2013b@gmail.com</a></p>
         </footer>
     </div>
 
-    <div id="welcome-modal" class="modal-overlay hidden">
+    <div id="welcome-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
         <div class="modal-card">
-            <h2 class="modal-title">Welcome to SalahTracker!</h2>
-            <p class="modal-subtitle">A simple, daily companion to help you stay consistent with your prayers.</p>
+            <h2 id="welcome-title" class="modal-title">Welcome to SalahTracker</h2>
+            <p class="modal-subtitle">A simple daily companion for staying consistent with your prayers</p>
 
             <div class="modal-body">
                 <ul class="modal-list">
-                    <li><span class="modal-bullet">•</span> <span><strong>Log Daily:</strong> Tap prayers on the "Today" tab to mark them complete.</span></li>
-                    <li><span class="modal-bullet">•</span> <span><strong>Build Streaks:</strong> Complete all 5 daily to watch your fire streak grow.</span></li>
-                    <li><span class="modal-bullet">•</span> <span><strong>Review History:</strong> Use the "Calendar" to track stats or click past dates to edit entries.</span></li>
-                    <li><span class="modal-bullet">•</span> <span><strong>Saved Automatically:</strong> It will remember your entries locally so they won't disappear.</span></li>
+                    <li><span><strong>Log daily:</strong> tap a prayer on the Today tab to mark it complete</span></li>
+                    <li><span><strong>Build streaks:</strong> complete all five each day to grow your streak</span></li>
+                    <li><span><strong>Review history:</strong> open the calendar to see stats or edit past days</span></li>
+                    <li><span><strong>Saved automatically:</strong> entries stay on this device so they don't disappear</span></li>
                 </ul>
             </div>
 
-            <button id="modal-get-started" class="modal-btn">Get Started</button>
+            <button id="modal-get-started" class="modal-btn">Get started</button>
         </div>
     </div>
 </body>
